@@ -18,9 +18,10 @@ function App() {
    e.preventDefault();
 
   const response = await fetch(
-    "https://rltrduclhd.execute-api.us-west-2.amazonaws.com/Suvarnatestdeployr",
+    // "https://your-api-gateway-url.amazonaws.com/prod/register",
+    "https://rltrduclhd.execute-api.us-west-2.amazonaws.com/Suvarnatestdeploy/register",
   {
-    methos: "POST",
+    method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(formData),
   }
