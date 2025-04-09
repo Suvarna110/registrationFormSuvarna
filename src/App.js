@@ -14,22 +14,41 @@ function App() {
     setFormData({...formData,[e.target.name]: e.target.value});
   };
 
-  const handleSubmit = async(e) => {
-   e.preventDefault();
+//   const handleSubmit = async(e) => {
+//    e.preventDefault();
 
-  const response = await fetch(
-    // "https://your-api-gateway-url.amazonaws.com/prod/register",
-    "https://rltrduclhd.execute-api.us-west-2.amazonaws.com/Suvarnatestdeploy/register",
-  {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(formData),
+//   const response = await fetch(
+//     // "https://your-api-gateway-url.amazonaws.com/prod/register",
+//     "https://rltrduclhd.execute-api.us-west-2.amazonaws.com/Suvarnatestdeploy/register",
+//   {
+//     method: "POST",
+//     headers: {"Content-Type": "application/json"},
+//     body: JSON.stringify(formData),
+//   }
+//   );
+
+//   const data = await response.json();
+//   alert(data.message);
+// };
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const response = await fetch("https://rltrduclhd.execute-api.us-west-2.amazonaws.com/Suvarnatestdeploy/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    const data = await response.json();
+    alert(data.message);
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    alert("Failed to register.");
   }
-  );
-
-  const data = await response.json();
-  alert(data.message);
 };
+
 
   return (
     <div>
